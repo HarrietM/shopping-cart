@@ -1,0 +1,43 @@
+<div class='navbar'>
+  <%= erb :'partials/nav'%>
+</div>
+<div class="horizontalLine"></div>
+<% if flash[:cart] %>
+  <div class="validation"><%= flash[:cart] %>
+  </div>
+<% end %>
+<% if flash[:remove] %>
+  <div class="validation"><%= flash[:remove] %>
+  </div>
+<% end %>
+<div class='details-wrap'>
+  <% if @contents == nil || @contents == [] %>
+    <p>You have nothing in your cart!</p>
+    <% else %>
+    <% @contents.each do |product| %>
+       <div class='item-details'>
+         <div class="name-price-wrap">
+            <div class='product-name'><%= product.name %></div>
+            <div class='product-price'>$<%= product.price %></div>
+          </div>
+          <div class='product-image'>Product Image Here</div>
+          <div class='product-description'>
+            <b>Description:</b>
+            <%= product.description %>
+          </div>
+         <form action='/remove' method='post'>
+         <input type="hidden" name="product_id" value=<%= product.id %>>
+         <input class ="shop-button" type="submit"value="Remove">
+         </form>
+       </div>
+     <% end %>
+    <%end%>
+  </div>
+  <div>
+    <p><b>Total: $<%= @total %></b></p>
+  </div>
+<div class='buy-now-div'>
+  <form action='/buy-now' method='post'>
+  <input class="shop-button" type="submit"value="Buy Now">
+  </form>
+</div>

@@ -1,0 +1,22 @@
+<div class='navbar'>
+  <%= erb :'partials/nav'%>
+</div>
+<div class="horizontalLine"></div>
+
+<div class='details-wrap'>
+        <div class='item-details'>
+          <div class="name-price-wrap">
+             <div class='product-name'><%= @product.name %></div>
+             <div class='product-price'>$<%= @product.price %></div>
+           </div>
+           <div class='product-image'>Product Image Here</div>
+           <div class='product-description'>
+             <b>Description:</b>
+             <%= @product.description %>
+           </div>
+           <form action='/buy' method='post'>
+          <input type="hidden" name="product_id" value=<%= @product.id %>>
+          <input class="shop-button" type="submit"value="Buy">
+          </form>
+      </div>
+  </div>
