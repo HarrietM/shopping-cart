@@ -1,0 +1,52 @@
+<div class="navbar">
+  <div class="main-wrapper">
+      <div class="main-logo">
+        <div class='camel-text'>camel</div>
+        <div class='shop-text'>Shop</div>
+  </div>
+</div>
+<div class='login-blurb'>a shop so special you can't even see what it sells before you login. It's not camels.</div>
+</div>
+<% if flash[:login] %>
+  <div class="validation"><%= flash[:login] %>
+  </div>
+<% end %>
+<% if flash[:error_list]%>
+  <% flash[:error_list].each_pair do |key, value| %>
+    <div class="validation"><%= key.capitalize %>
+    <%= value[0] %>
+    </div>
+    <% end %>
+<% end %>
+<div class= 'container'>
+  <div class='forms'>
+    <h1>Login</h1>
+    <form name="login form" onsubmit="return validation();" class='form' action="/login" method='post'>
+        <input class="input" type="text" name="email" placeholder="Email Address">
+        <div id="message"></div>
+        <br>
+        <input class="input" type="password" name="password" placeholder="Password">
+        <br>
+        <input class="button" type="submit" value="Login">
+      </form>
+  </div>
+  <div class="verticalLine"></div>
+  <div class='forms'>
+    <h1>Signup</h1>
+    <form class='form'action="/signup" method='post'>
+
+      <input class="input" type="text" name="name" placeholder="Your Name">
+      <br>
+      <input class="input" type="text" name="email" placeholder="Email Address">
+      <br>
+      <input class="input" type="text" name="address" placeholder="Your Postal Address">
+      <br>
+      <input class="input" type="password" name="password" placeholder="Password">
+      <br>
+      <input class="input" type="password" name="password_confirmation" placeholder="Confirm Your Password">
+      <br>
+      <input class="button" type="submit" value="Sign up">
+    </form>
+  </div>
+</div>
+
